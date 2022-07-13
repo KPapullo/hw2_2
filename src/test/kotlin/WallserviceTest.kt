@@ -1,10 +1,12 @@
-import data.Post
+import data.posts.Post
 import org.junit.Assert.*
 import org.junit.Test
+import java.util.Arrays.copyOfRange
 
 class WallserviceTest {
 
-    private val post1 = Post(3, 4, 2022, "first post")
+
+    private val post1 = Post(3, 4, 2022, "first post" )
     private val post2 = Post(2, 876607, 2022, "second post")
     private val post3 = Post(4, 607, 2022, "third post")
 

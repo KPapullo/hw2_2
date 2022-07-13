@@ -1,11 +1,13 @@
-package data
+package data.posts
+
+import data.AttachmentType
 
 data class Post(
     val id: Int = 0, //Идентификатор записи
     val ownerId: Int = 2, //Идентификатор владельца стены, на которой размещена запись
     var date: Int = 2022, //Время публикации записи в формате unixtime
     val text: String? = null, //Текст записи
-    val createdBy: Int = 4, //Идентификатор администратора, который опубликовал запись
+   /* val createdBy: Int = 4, //Идентификатор администратора, который опубликовал запись
     val fromId: Int = 3, //Идентификатор автора записи (от чьего имени опубликована запись)
     val replyOwnerId: Int? = null, //Идентификатор владельца записи, в ответ на которую была оставлена текущая.
     val replyPostId: Int? = null, //Идентификатор записи, в ответ на которую была оставлена текущая
@@ -26,7 +28,11 @@ data class Post(
     val isFavorite: Boolean? = null,//true, если объект добавлен в закладки у текущего пользователя
     val donut: Donut? = null,//Информация о записи VK Donut:
     val postponedId: Int? = null,//Идентификатор отложенной записи. Это поле возвращается тогда, когда запись стояла на таймере.
+    
+    */
 ) {
+    var attachment = emptyArray<AttachmentType>()
+
     object Wallservice {
 
         private var posts = emptyArray<Post>()
