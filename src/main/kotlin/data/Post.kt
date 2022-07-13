@@ -17,6 +17,7 @@ data class Post(
             posts += post.copy(id = posts.size + 1)
             return posts.last()
         }
+        
         fun update(post: Post): Boolean {
             for (cell in posts) {
                 if (cell.id == post.id) {
@@ -26,15 +27,9 @@ data class Post(
             }
             return false
         }
-       /* fun update(postToUpdate: Post): Boolean {
-            for ((index, post) in posts.withIndex()) {
-                if (post.id == postToUpdate.id) {
-                    posts[index] = postToUpdate.copy()
-                }
-                return true
-            }
+       
             return false
         }
-*/
+
     }
 }
