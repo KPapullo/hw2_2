@@ -1,4 +1,6 @@
+import data.posts.Comment
 import data.posts.Post
+import data.posts.PostNotFoundException
 import org.junit.Assert.*
 import org.junit.Test
 import java.util.Arrays.copyOfRange
@@ -56,6 +58,41 @@ class WallserviceTest {
 
         // проверяем результат (используйте assertTrue или assertFalse)
         assertFalse(result)
+    }
+    @Test(expected = PostNotFoundException::class)
+    fun createComment_returnException() {
+        //arrange
+        val service = Post.Wallservice
+        service.add(post1)
+        service.add(post2)
+        //act
+        val actualException = service.createComment(
+            comment = Comment(
+                ownerId = 4,
+                postId = 5,
+                fromGroup = 34,
+                message = "Отличный пост"
+            )
+        )
+    }
+
+    @Test
+    fun createComment_returnTrue() {
+        //arrange
+        val service = Post.Wallservice
+        service.add(post1)
+        service.add(post2)
+        //act
+        val result = service.createComment(
+            comment = Comment(
+                ownerId = 4,
+                postId = 1,
+                fromGroup = 34,
+                message = "Отличный пост"
+            )
+        )
+        //assert
+        assertTrue(result)
     }
 
 

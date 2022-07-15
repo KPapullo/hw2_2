@@ -36,6 +36,7 @@ data class Post(
     object Wallservice {
 
         private var posts = emptyArray<Post>()
+        private var comments = emptyArray<Comment>()
 
         private var postId = 1
 
@@ -53,6 +54,14 @@ data class Post(
             }
             return false
         }
-
+        fun createComment(comment: Comment): Boolean {
+            for (post in posts) {
+                if (post.id == comment.postId) {
+                    comments += comment
+                    return true
+                }
+            }
+            throw PostNotFoundException("Пост с ID ${comment.postId} не найден")
+        }
     }
 }
